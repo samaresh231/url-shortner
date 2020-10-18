@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Url Shortner</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="d-flex justify-content-center">URL Shortner</h1>
+        <form action="/short" method="POST" class="form-inline d-flex justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="text" class="form-control" name="url" id="inputPassword2" placeholder="Enter full url">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </form>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <th>Full Url</th>
+                <th>Short Url</th>
+                <th>No. of Clicks</th>
+            </thead>
+            <tbody>
+                <% for(let i=0; i<urlList.length; i++){ %>
+                    <tr>
+                        <td>
+                            <a href="https://<%= urlList[i].full %>">
+                                <%= urlList[i].full %>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/<%= urlList[i].short%>">
+                                www.shorturl.com/<%= urlList[i].short %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= urlList[i].clicks %>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
